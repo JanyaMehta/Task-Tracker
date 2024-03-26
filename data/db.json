@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Example Task 1",
+      "description": "This is an example task description.",
+      "startDate": "2024-03-24T12:00:00.000Z",
+      "endDate": null,
+      "status": "Pending",
+      "assignee": "John Doe",
+      "priority": "P1"
+    },
+    {
+      "id": 2,
+      "title": "Example Task 2",
+      "description": "This is another example task description.",
+      "startDate": "2024-03-24T12:00:00.000Z",
+      "endDate": null,
+      "status": "In Progress",
+      "assignee": "Jane Smith",
+      "priority": "P2"
+    }
+  ]
+}
