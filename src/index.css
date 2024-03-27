@@ -1,80 +1,106 @@
-/* Task Card Styles */
-.task-card {
- background-color: white;
- border-radius: 0.5rem;
- box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
- display: flex;
- /* Allow horizontal layout for task info and status column */
- flex-direction: column;
- /* Stack elements vertically */
- padding: 1rem;
- /* Add some padding for content spacing */
- margin-bottom: 1rem;
- /* Add spacing between cards */
- width: 300px;
- /* Set a fixed width for all cards */
+/* index.css */
+
+/* Home styles */
+body {
+  font-family: Arial, sans-serif;
+  
 }
 
-/* Task Info Styles */
-.task-info {
- display: flex;
- flex-direction: column;
+.home {
+  width: 100%;
+  padding: 2px;
 }
 
-/* Task Header Styles */
-.task-header {
- display: flex;
- justify-content: space-between;
- align-items: center;
+h1 {
+  margin-bottom: 20px;
 }
 
-/* Task Title Styles */
-.task-title {
- margin: 0;
+/* Filter section */
+.task-filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-/* Priority Styles */
-.priority {
- background-color: #3182ce;
- /* Blue background */
- color: white;
- /* White text */
- padding: 0.25rem 0.5rem;
- /* Adjust padding */
- border-radius: 0.25rem;
- /* Rounded corners */
+.task-filters input[type="date"],
+.task-filters input[type="text"],
+.task-filters select {
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-/* Line Separator */
-.line-separator {
- border-bottom: 1px solid #e2e8f0;
- margin: 0.5rem 0;
+/* Add new task button */
+.add-task-button {
+  margin-top: 10px;
+  float: right;
 }
 
-/* Task Description Styles */
-.task-description {
- margin-bottom: 0.5rem;
- /* Add space below the description */
+.add-task-button button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* Assignee Styles */
-.assignee {
- font-style: italic;
- /* Italicize assignee name */
+.add-task-button button:hover {
+  background-color: #0056b3;
 }
 
-/* Status Element Styles */
-.status {
- background-color: #3182ce;
- /* Blue background */
- color: white;
- /* White text */
- padding: 0.5rem 1rem;
- /* Adjust padding */
- border-radius: 0.25rem;
- /* Rounded corners */
- text-align: left;
- /* Align text to the left */
- width: fit-content;
- /* Make the width fit the content */
+/* Task Sort section */
+.sort-filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
+
+.sort-filters select {
+  margin-right: 10px;
+  margin-left: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Task columns */
+.task-columns {
+  display: flex;
+  
+}
+
+.column {
+  flex-grow: 1;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 500px;
+  margin-right: 10px;
+  max-width: calc(20% - 10px);
+}
+
+
+
+/* Custom styles for column headings */
+.column-heading {
+  
+  color: #fff;
+  width: 100%;
+  padding: 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+

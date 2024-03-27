@@ -1,0 +1,175 @@
+/* Task Card Styles */
+.task-card {
+ background-color: white;
+ border-radius: 0.5rem;
+ box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+ display: flex;
+ /* Allow horizontal layout for task info and status column */
+ flex-direction: column;
+ /* Stack elements vertically */
+ padding: 1rem;
+ /* Add some padding for content spacing */
+ margin-bottom: 1rem;
+ /* Add spacing between cards */
+ width: 300px;
+ /* Set a fixed width for all cards */
+}
+
+/* Task Info Styles */
+.task-info {
+ display: flex;
+ flex-direction: column;
+}
+
+/* Task Header Styles */
+.task-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+/* Task Title Styles */
+.task-title {
+ margin: 0;
+}
+
+/* Priority Styles */
+.priority {
+ background-color: #3182ce;
+ /* Blue background */
+ color: white;
+ /* White text */
+ padding: 0.25rem 0.5rem;
+ /* Adjust padding */
+ border-radius: 0.25rem;
+ /* Rounded corners */
+}
+
+/* Line Separator */
+.line-separator {
+ border-bottom: 1px solid #e2e8f0;
+ margin: 0.5rem 0;
+}
+
+/* Task Description Styles */
+.task-description {
+ margin-bottom: 0.5rem;
+ /* Add space below the description */
+}
+
+/* Assignee Styles */
+.assignee {
+ font-style: italic;
+ /* Italicize assignee name */
+}
+
+/* Status Element Styles */
+.status {
+ background-color: #3182ce;
+ /* Blue background */
+ color: white;
+ /* White text */
+ padding: 0.5rem 1rem;
+ /* Adjust padding */
+ border-radius: 0.25rem;
+ /* Rounded corners */
+ text-align: left;
+ /* Align text to the left */
+ width: fit-content;
+ /* Make the width fit the content */
+}
+
+/* New styles for the three-dot button */
+.more-actions-button {
+ background-color: #3182ce;
+ /* Blue background for the button */
+ border: none;
+ padding: 5px;
+ /* Adjust padding for spacing */
+ cursor: pointer;
+ color: white;
+ /* White dots */
+ font-size: 1.2rem;
+ /* Adjust font size for the dots */
+ border-radius: 0.25rem;
+ /* Rounded corners */
+ margin-left: 0;
+ /* Remove margin-left */
+ display: inline-flex;
+ align-items: center;
+ flex-direction: column;
+ /* Stack dots vertically */
+}
+
+.more-actions-dots {
+ line-height: 1.2;
+ /* Set line-height to match font size for vertical spacing */
+}
+
+/* Assignee options styling */
+.assignee-options {
+ display: flex;
+ /* Enable flexbox for assignee section */
+ justify-content: space-between;
+ /* Align items at opposite ends */
+ align-items: center;
+ /* Vertically align assignee and button */
+}
+
+
+.hamburger-icon {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-around;
+ align-items: center;
+ width: 20px;
+ height: 20px;
+ cursor: pointer;
+}
+
+.dot {
+ width: 4px;
+ height: 3px;
+ background-color: #fff;
+ border-radius: 2px;
+}
+
+.dot:nth-child(1) {
+ transform-origin: top left;
+}
+
+.dot:nth-child(2) {
+ transform-origin: top left;
+}
+
+.dot:nth-child(3) {
+ transform-origin: bottom left;
+}
+
+
+
+/* Dropdown menu styles */
+.dropdown-menu {
+ position: absolute;
+ background-color: #D9D9D9;
+ min-width: 100px;
+ box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ z-index: 1;
+
+
+}
+
+.dropdown-menu p {
+ padding: 10px;
+ cursor: pointer;
+ color: #686868;
+ /* Black text */
+ transition: background-color 0.3s;
+
+ /* Smooth transition for background color */
+}
+
+.dropdown-menu p:hover {
+ background-color: #3182ce;
+ color: #fff;
+}

@@ -1,10 +1,11 @@
-import TaskList from "./TaskList";
+import Home from "./Home";
+
 
 
 function App() {
   return (
     <div className="App">
-      <TaskList />
+      <Home />
     </div>
   );
 }

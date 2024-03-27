@@ -1,7 +1,13 @@
-import React from 'react';
-import './index.css';
+import React, { useState } from 'react';
+import './Task.css';
 
 const Task = ({ task }) => {
+  const [showOptions, setShowOptions] = useState(false); // State for dropdown visibility
+
+  const toggleOptions = () => {
+    setShowOptions(!showOptions); // Toggle visibility on click
+  };
+
   return (
     <div className="task-card">
       {/* Task information */}
@@ -13,7 +19,23 @@ const Task = ({ task }) => {
         <div className="line-separator"></div>
         <p className="task-description">{task.description}</p>
         <div className="assignee-options">
-          <p className="assignee">Assignee: {task.assignee}</p>
+          <p className="assignee">
+            Assignee: {task.assignee}
+          </p>
+          {/* Button with three dots */}
+          <div className="more-actions-button" onClick={toggleOptions}>
+            <span className="hamburger-icon">
+              <span className="dot"></span>
+              <span className="dot"></span>
+              <span className="dot"></span>
+            </span>
+            {showOptions && ( // Render menu only if visible
+              <div className="dropdown-menu">
+                <p onClick={() => console.log('Edit Task')}>Edit</p>
+                <p onClick={() => console.log('Delete Task')}>Delete</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       {/* Task status */}
