@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
-import { useState} from 'react';
-import CreateTask from './CreateTask'; // Import the CreateTask component
+import CreateTask from './CreateTask';
+import TaskFetch from './TaskFetch'; // Import TaskFetch component
 
-const Home = () => {
-
-const [showCreateTask, setShowCreateTask] = useState(false); // State to manage visibility of CreateTask component
+const Home = ({ tasks }) => { // Pass tasks data as props
+  const [showCreateTask, setShowCreateTask] = useState(false);
 
   const handleAddTaskClick = () => {
-    setShowCreateTask(true); // Set showCreateTask to true when Add New Task button is clicked
+    setShowCreateTask(true);
   };
 
+  const handleCloseModal = () => {
+    setShowCreateTask(false);
+  };
 
   return (
     <div className="home">
       <h1>Task Board</h1>
       <div className="add-task-button">
-        <button className="add-task-button" onClick={handleAddTaskClick}>Add New Task</button>
+        <button className="add-task-button" onClick={handleAddTaskClick}>
+          Add New Task
+        </button>
       </div>
-       {showCreateTask && <CreateTask />}
+      {showCreateTask && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <button className="close-modal" onClick={handleCloseModal}>
+              &times;
+            </button>
+            <CreateTask />
+          </div>
+        </div>
+      )}
       <div className="task-filters">
         <p>Filter By:</p>
         <input type="text" placeholder="Assignee" />
@@ -47,31 +60,36 @@ const [showCreateTask, setShowCreateTask] = useState(false); // State to manage 
           <div className="column-heading" style={{ backgroundColor: '#8C8B90' }}>
             <h3>Pending</h3>
           </div>
-          {/* Tasks with status "Pending" */}
+          {/* Display tasks with status "Pending" */}
+          <TaskFetch tasks={tasks} status="Pending" />
         </div>
         <div className="column">
           <div className="column-heading" style={{ backgroundColor: '#E99921' }}>
             <h3>In Progress</h3>
           </div>
-          {/* Tasks with status "In Progress" */}
+          {/* Display tasks with status "In Progress" */}
+          <TaskFetch tasks={tasks} status="In Progress" />
         </div>
         <div className="column">
           <div className="column-heading" style={{ backgroundColor: '#42A81F' }}>
             <h3>Completed</h3>
           </div>
-          {/* Tasks with status "Completed" */}
+          {/* Display tasks with status "Completed" */}
+          <TaskFetch tasks={tasks} status="Completed" />
         </div>
         <div className="column">
           <div className="column-heading" style={{ backgroundColor: '#353976' }}>
             <h3>Deployed</h3>
           </div>
-          {/* Tasks with status "Deployed" */}
+          {/* Display tasks with status "Deployed" */}
+          <TaskFetch tasks={tasks} status="Deployed" />
         </div>
         <div className="column">
           <div className="column-heading" style={{ backgroundColor: '#F8876F' }}>
             <h3>Deferred</h3>
           </div>
-          {/* Tasks with status "Deferred" */}
+          {/* Display tasks with status "Deferred" */}
+          <TaskFetch tasks={tasks} status="Deferred" />
         </div>
       </div>
     </div>

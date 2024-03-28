@@ -4,15 +4,13 @@
  border-radius: 0.5rem;
  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
  display: flex;
- /* Allow horizontal layout for task info and status column */
  flex-direction: column;
- /* Stack elements vertically */
  padding: 1rem;
- /* Add some padding for content spacing */
- margin-bottom: 1rem;
- /* Add spacing between cards */
- width: 300px;
- /* Set a fixed width for all cards */
+ margin: 1rem 1rem;
+ width: 100%;
+ /* Set the width to 100% to adjust to the column */
+ max-width: 200px;
+ /* Set a maximum width to prevent card from becoming too wide */
 }
 
 /* Task Info Styles */
