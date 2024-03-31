@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import './CreateTask.css';
 
-const CreateTask = () => {
+const CreateTask = ({ taskDetails, isEditing, setIsEditing }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [assignee, setAssignee] = useState('');
   const [team, setTeam] = useState('');
   const [priority, setPriority] = useState('P0');
-  const [status, setStatus] = useState('Pending'); // State for status option
-  const [formSubmitted, setFormSubmitted] = useState(false); // State to track form submission
+  const [status, setStatus] = useState('Pending');
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (isEditing && taskDetails) {
+      // Set initial values from taskDetails if in editing mode
+      setTitle(taskDetails.title);
+      setDescription(taskDetails.description);
+      setAssignee(taskDetails.assignee);
+      setTeam(taskDetails.team);
+      setPriority(taskDetails.priority);
+      setStatus(taskDetails.status);
+    }
+  }, [isEditing, taskDetails]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,23 +32,19 @@ const CreateTask = () => {
         assignee,
         team,
         priority,
-        status, // Include status in the request payload
+        status,
       });
       console.log('Task created:', response.data);
-      
-      window.location.reload(); // Reload the page to fetch the updated task list
+      window.location.reload();
       setFormSubmitted(true);
-      // Reset form fields after successful submission
       handleReset();
-      // Set formSubmitted to true to hide the form
-      
+      setIsEditing(false);
     } catch (error) {
       console.error('Error creating task:', error);
     }
   };
 
   const handleReset = () => {
-    // Clear form fields
     setTitle('');
     setDescription('');
     setAssignee('');
@@ -49,19 +57,19 @@ const CreateTask = () => {
     <div>
       {!formSubmitted && (
         <div className="form-container">
-          <h2 className="form-title">Create A Task</h2>
+          <h2 className="form-title">{isEditing ? 'Edit Task' : 'Create Task'}</h2>
           <form onSubmit={handleSubmit}>
             <label className="form-label">Title:</label>
-            <input className="form-input" type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+            <input className="form-input" type="text" value={title} onChange={(e) => setTitle(e.target.value)} required disabled={isEditing} />
 
             <label className="form-label">Description:</label>
-            <input className="form-input" type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+            <input className="form-input" type="text" value={description} onChange={(e) => setDescription(e.target.value)} required disabled={isEditing} />
 
             <label className="form-label">Assignee:</label>
-            <input className="form-input" type="text" value={assignee} onChange={(e) => setAssignee(e.target.value)} />
+            <input className="form-input" type="text" value={assignee} onChange={(e) => setAssignee(e.target.value)} required disabled={isEditing} />
 
             <label className="form-label">Team:</label>
-            <input className="form-input" type="text" value={team} onChange={(e) => setTeam(e.target.value)} />
+            <input className="form-input" type="text" value={team} onChange={(e) => setTeam(e.target.value)} required disabled={isEditing} />
 
             <label className="form-label">Priority:</label>
             <select className="form-select" value={priority} onChange={(e) => setPriority(e.target.value)}>
@@ -71,7 +79,6 @@ const CreateTask = () => {
               <option value="P3">P3</option>
             </select>
 
-            {/* Status select */}
             <label className="form-label">Status:</label>
             <select className="form-select" value={status} onChange={(e) => setStatus(e.target.value)}>
               <option value="Pending">Pending</option>

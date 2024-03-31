@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import './Task.css';
+import CreateTask from './CreateTask';
 
 const Task = ({ task }) => {
   const [showOptions, setShowOptions] = useState(false); // State for dropdown visibility
+  const [isEditing, setIsEditing] = useState(false);
+
+const handleEditClick = () => {
+  setIsEditing(true);
+};
+
+const handleCloseModal = () => {
+    setIsEditing(false);
+  }; 
 
   const toggleOptions = () => {
     setShowOptions(!showOptions); // Toggle visibility on click
@@ -31,10 +41,12 @@ const Task = ({ task }) => {
             </span>
             {showOptions && ( // Render menu only if visible
               <div className="dropdown-menu">
-                <p onClick={() => console.log('Edit Task')}>Edit</p>
+                <p onClick={handleEditClick}>Edit</p>
                 <p onClick={() => console.log('Delete Task')}>Delete</p>
               </div>
             )}
+
+
           </div>
         </div>
       </div>
@@ -42,6 +54,17 @@ const Task = ({ task }) => {
       <div className="status">
         {task.status}
       </div>
+      {isEditing && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <button className="close-modal" onClick={handleCloseModal}>
+              &times;
+            </button>
+            {/* Pass task details to CreateTask component for editing */}
+            <CreateTask taskDetails={task} isEditing={isEditing} setIsEditing={setIsEditing} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };
